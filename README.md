@@ -1,4 +1,4 @@
 # MicroComps
 🧱 A bundle of micro components.
 
-🚨 Not safe to use in production now.
+🚨 W.I.P, not safe to use in production now.
