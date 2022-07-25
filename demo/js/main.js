@@ -1,7 +1,7 @@
 let mc;
 let car = {
-	brand: 'Toyota',
-	model: 'C.H.R',
+	brand: 'Brand',
+	model: 'Car model',
 	color: '#000000',
 	tractionBallOption: true,
 	year: 2022,
