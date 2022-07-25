@@ -70,6 +70,10 @@ class NumberEditor extends EventTarget{
 			lbl.classList.add('label');
 			this.dom.querySelector('input').before(lbl);
 		}
+
+		if(this.options.onCreate){
+			this.options.onCreate(this.object[this.key]);
+		}
 	}
 
 	bindEvents(){
@@ -87,14 +91,10 @@ class NumberEditor extends EventTarget{
 			this.object[this.key] = v;
 			e.target.value = v;
 
-			if(this.onChangeCallback){
-				this.onChangeCallback(this.object[this.key])
+			if(this.options.onChange){
+				this.options.onChange(this.object[this.key]);
 			}
 		});
-	}
-
-	onChange(callback){
-		this.onChangeCallback = callback;
 	}
 }
 
@@ -127,20 +127,20 @@ class BooleanEditor extends EventTarget{
 			lbl.classList.add('label');
 			this.dom.querySelector('input').before(lbl);
 		}
+
+		if(this.options.onCreate){
+			this.options.onCreate(this.object[this.key]);
+		}
 	}
 
 	bindEvents(){
 		this.dom.querySelector('input').addEventListener('change', (e) => {
 			this.object[this.key] = e.target.checked;
 
-			if(this.onChangeCallback){
-				this.onChangeCallback(this.object[this.key])
+			if(this.options.onChange){
+				this.options.onChange(this.object[this.key]);
 			}
 		});
-	}
-
-	onChange(callback){
-		this.onChangeCallback = callback;
 	}
 }
 
@@ -173,19 +173,19 @@ class StringEditor extends EventTarget{
 			lbl.classList.add('label');
 			this.dom.querySelector('input').before(lbl);
 		}
+
+		if(this.options.onCreate){
+			this.options.onCreate(this.object[this.key]);
+		}
 	}
 
 	bindEvents(){
 		this.dom.querySelector('input').addEventListener('change', (e) => {
 			this.object[this.key] = e.target.value;
 
-			if(this.onChangeCallback){
-				this.onChangeCallback(this.object[this.key])
+			if(this.options.onChange){
+				this.options.onChange(this.object[this.key]);
 			}
 		});
-	}
-
-	onChange(callback){
-		this.onChangeCallback = callback;
 	}
 }

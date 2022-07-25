@@ -14,14 +14,24 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		container: document.getElementById('microcomps')
 	});
 
-	mc.add(car, 'tractionBallOption', 'boolean').onChange((v) => {
-		console.log('Changed tractionBallOption', v);
-		displayTargetObjectValues();
-	});
+	mc.add(car, 'tractionBallOption', 'boolean', {
+		onCreate: (v) => {
+			console.log('On create tractionBallOption', v);
+		},
+		onChange: (v) => {
+			console.log('Changed tractionBallOption', v);
+			displayTargetObjectValues();
+		}
+	})
 
-	mc.add(car, 'year', 'number').onChange((v) => {
-		console.log('Changed year', v);
-		displayTargetObjectValues();
+	mc.add(car, 'year', 'number', {
+		onCreate: (v) => {
+			console.log('On create tractionBallOption', v);
+		},
+		onChange: (v) => {
+			console.log('Changed year', v);
+			displayTargetObjectValues();
+		}
 	});
 
 	mc.add(car, 'maxSpeed', 'number', { min: 50, max: 300, label: 'Custom label for maxSpeed' }).onChange((v) => {
