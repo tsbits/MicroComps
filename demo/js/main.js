@@ -29,6 +29,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		displayTargetObjectValues();
 	});
 
+	mc.add(car, 'licencePlate', 'string', {}).onChange((v) => {
+		console.log('Changed licence plate', v);
+		displayTargetObjectValues();
+	});
+
 	console.log(mc)
 	displayTargetObjectValues();
 });
