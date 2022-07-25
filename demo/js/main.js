@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 			console.log('Changed tractionBallOption', v);
 			displayTargetObjectValues();
 		}
-	})
+	});
 
 	mc.add(car, 'year', 'number', {
 		onCreate: (v) => {
@@ -34,17 +34,22 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		}
 	});
 
-	mc.add(car, 'maxSpeed', 'number', { min: 50, max: 300, label: 'Custom label for maxSpeed' }).onChange((v) => {
-		console.log('Changed maxSpeed', v);
-		displayTargetObjectValues();
+	mc.add(car, 'maxSpeed', 'number', {
+		onCreate: (v) => {
+			console.log('On create tractionBallOption', v);
+		},
+		onChange: (v) => {
+			console.log('Changed tractionBallOption', v);
+			displayTargetObjectValues();
+		}
 	});
 
-	mc.add(car, 'licencePlate', 'string', {}).onChange((v) => {
-		console.log('Changed licence plate', v);
-		displayTargetObjectValues();
+	mc.add(car, 'licencePlate', 'string', { onChange: (v) => {
+			console.log('Changed tractionBallOption', v);
+			displayTargetObjectValues();
+		}
 	});
 
-	console.log(mc)
 	displayTargetObjectValues();
 });
 
