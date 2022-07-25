@@ -32,6 +32,11 @@ class MicroComps extends EventTarget{
 			this.dom.append(comp.dom);
 			this.comps.push(comp);
 		}
+		else if(type == "string"){
+			comp = new StringEditor(object, key, options);
+			this.dom.append(comp.dom);
+			this.comps.push(comp);
+		}
 
 		return comp;
 	}
@@ -66,12 +71,8 @@ class NumberEditor extends EventTarget{
 			this.dom.querySelector('input').before(lbl);
 		}
 
-		if(this.options.min){
-			this.dom.querySelector('input').setAttribute('min', this.options.min)
-		}
-
-		if(this.options.max){
-			this.dom.querySelector('input').setAttribute('max', this.options.max)
+		if(this.options.onCreate){
+			this.options.onCreate(this.object[this.key]);
 		}
 	}
 
@@ -90,14 +91,10 @@ class NumberEditor extends EventTarget{
 			this.object[this.key] = v;
 			e.target.value = v;
 
-			if(this.onChangeCallback){
-				this.onChangeCallback(this.object[this.key])
+			if(this.options.onChange){
+				this.options.onChange(this.object[this.key]);
 			}
 		});
-	}
-
-	onChange(callback){
-		this.onChangeCallback = callback;
 	}
 }
 
@@ -130,19 +127,65 @@ class BooleanEditor extends EventTarget{
 			lbl.classList.add('label');
 			this.dom.querySelector('input').before(lbl);
 		}
+
+		if(this.options.onCreate){
+			this.options.onCreate(this.object[this.key]);
+		}
 	}
 
 	bindEvents(){
 		this.dom.querySelector('input').addEventListener('change', (e) => {
 			this.object[this.key] = e.target.checked;
 
-			if(this.onChangeCallback){
-				this.onChangeCallback(this.object[this.key])
+			if(this.options.onChange){
+				this.options.onChange(this.object[this.key]);
 			}
 		});
 	}
+}
 
-	onChange(callback){
-		this.onChangeCallback = callback;
+class StringEditor extends EventTarget{
+	constructor(object, key, options){
+		super();
+		this.object = object;
+		this.key = key;
+		this.options = options;
+		this.dom;
+
+		this.createDom();
+		this.bindEvents();
+	}
+
+	createDom(){
+		this.dom = document.createElement('li');
+		let checked = this.object[this.key]?'checked':'';
+		this.dom.innerHTML = `<input type="text" value="${this.object[this.key]}">`;
+
+		if(this.options.label){
+			let lbl = document.createElement('p');
+			lbl.innerText = this.options.label;
+			lbl.classList.add('label');
+			this.dom.querySelector('input').before(lbl);
+		}
+		else{			
+			let lbl = document.createElement('p');
+			lbl.innerText = this.key;
+			lbl.classList.add('label');
+			this.dom.querySelector('input').before(lbl);
+		}
+
+		if(this.options.onCreate){
+			this.options.onCreate(this.object[this.key]);
+		}
+	}
+
+	bindEvents(){
+		this.dom.querySelector('input').addEventListener('change', (e) => {
+			this.object[this.key] = e.target.value;
+
+			if(this.options.onChange){
+				this.options.onChange(this.object[this.key]);
+			}
+		});
 	}
 }
