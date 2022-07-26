@@ -2,7 +2,7 @@ class MicroComps extends EventTarget{
 	constructor(options = {}){
 		super();
 
-		this.uid = new Date().getTime() + Math.round(Math.random()*1000000)
+		this.uid = new Date().getTime() + Math.round(Math.random()*10)
 		this.options = options;
 		this.dom;
 		this.comps = [];
