@@ -71,6 +71,14 @@ class NumberEditor extends EventTarget{
 			this.dom.querySelector('input').before(lbl);
 		}
 
+		if(this.options.min){
+			this.dom.querySelector('input').setAttribute('min', this.options.min);
+		}
+
+		if(this.options.max){
+			this.dom.querySelector('input').setAttribute('max', this.options.max);
+		}
+
 		if(this.options.onCreate){
 			this.options.onCreate(this.object[this.key]);
 		}

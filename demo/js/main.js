@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	});
 
 	mc.add(car, 'year', 'number', {
+		min : 1900,
 		onCreate: (v) => {
 			console.log('On create year', v);
 		},
@@ -35,6 +36,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	});
 
 	mc.add(car, 'maxSpeed', 'number', {
+		min : 50,
+		max: 300,
 		onCreate: (v) => {
 			console.log('On create maxSpeed', v);
 		},
