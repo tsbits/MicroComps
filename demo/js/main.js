@@ -1,7 +1,7 @@
 let mc;
 let car = {
 	brand: 'Brand',
-	model: 'Car model',
+	model: 'Model B',
 	color: '#000000',
 	tractionBallOption: true,
 	year: 2022,
@@ -53,6 +53,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		},
 		onChange: (v) => {
 			console.log('Changed licencePlate', v);
+			displayTargetObjectValues();
+		}
+	});
+
+	mc.add(car, 'model', 'list', {
+		values: ['Model A', 'Model B', 'Model C'],
+		onChange: (v) => {
+			console.log('Changed model', v);
 			displayTargetObjectValues();
 		}
 	});

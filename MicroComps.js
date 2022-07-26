@@ -37,6 +37,11 @@ class MicroComps extends EventTarget{
 			this.dom.append(comp.dom);
 			this.comps.push(comp);
 		}
+		else if(type == "list"){
+			comp = new ListEditor(object, key, options);
+			this.dom.append(comp.dom);
+			this.comps.push(comp);
+		}
 
 		return comp;
 	}
@@ -166,7 +171,6 @@ class StringEditor extends EventTarget{
 
 	createDom(){
 		this.dom = document.createElement('li');
-		let checked = this.object[this.key]?'checked':'';
 		this.dom.innerHTML = `<input type="text" value="${this.object[this.key]}">`;
 
 		if(this.options.label){
@@ -189,6 +193,67 @@ class StringEditor extends EventTarget{
 
 	bindEvents(){
 		this.dom.querySelector('input').addEventListener('change', (e) => {
+			this.object[this.key] = e.target.value;
+
+			if(this.options.onChange){
+				this.options.onChange(this.object[this.key]);
+			}
+		});
+	}
+}
+
+class ListEditor extends EventTarget{
+	constructor(object, key, options){
+		super();
+		this.object = object;
+		this.key = key;
+		this.options = options;
+		this.dom;
+
+		this.createDom();
+		this.bindEvents();
+	}
+
+	createDom(){
+		this.dom = document.createElement('li');
+
+		let select = document.createElement('select');
+		this.dom.append(select);
+
+		if(this.options.label){
+			let lbl = document.createElement('p');
+			lbl.innerText = this.options.label;
+			lbl.classList.add('label');
+			this.dom.querySelector('select').before(lbl);
+		}
+		else{			
+			let lbl = document.createElement('p');
+			lbl.innerText = this.key;
+			lbl.classList.add('label');
+			this.dom.querySelector('select').before(lbl);
+		}
+
+		if(this.options.values){
+			let select = this.dom.querySelector('select');
+
+			for(let v in this.options.values){
+				let opt = document.createElement('option');
+				console.log(opt)
+				opt.text = this.options.values[v];
+				opt.value = this.options.values[v];
+				select.append(opt);
+			}
+		}
+		
+		select.value = this.object[this.key];
+
+		if(this.options.onCreate){
+			this.options.onCreate(this.object[this.key]);
+		}
+	}
+
+	bindEvents(){
+		this.dom.querySelector('select').addEventListener('change', (e) => {
 			this.object[this.key] = e.target.value;
 
 			if(this.options.onChange){
