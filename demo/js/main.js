@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 	mc.add(car, 'year', 'number', {
 		onCreate: (v) => {
-			console.log('On create tractionBallOption', v);
+			console.log('On create year', v);
 		},
 		onChange: (v) => {
 			console.log('Changed year', v);
@@ -36,16 +36,20 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 	mc.add(car, 'maxSpeed', 'number', {
 		onCreate: (v) => {
-			console.log('On create tractionBallOption', v);
+			console.log('On create maxSpeed', v);
 		},
 		onChange: (v) => {
-			console.log('Changed tractionBallOption', v);
+			console.log('Changed maxSpeed', v);
 			displayTargetObjectValues();
 		}
 	});
 
-	mc.add(car, 'licencePlate', 'string', { onChange: (v) => {
-			console.log('Changed tractionBallOption', v);
+	mc.add(car, 'licencePlate', 'string', {
+		onCreate: (v) => {
+			console.log('On create licencePlate', v);
+		},
+		onChange: (v) => {
+			console.log('Changed licencePlate', v);
 			displayTargetObjectValues();
 		}
 	});
