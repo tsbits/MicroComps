@@ -197,7 +197,7 @@ class StringEditor extends EventTarget{
 	}
 
 	bindEvents(){
-		this.dom.querySelector('input').addEventListener('change', (e) => {
+		this.dom.querySelector('input').addEventListener('input', (e) => {
 			this.object[this.key] = e.target.value;
 
 			if(this.options.onChange){
@@ -303,7 +303,7 @@ class ColorEditor extends EventTarget{
 	}
 
 	bindEvents(){
-		this.dom.querySelector('input').addEventListener('change', (e) => {
+		this.dom.querySelector('input').addEventListener('input', (e) => {
 			let v = e.target.value;
 
 			this.object[this.key] = v;
