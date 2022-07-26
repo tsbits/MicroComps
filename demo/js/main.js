@@ -2,7 +2,7 @@ let mc;
 let car = {
 	brand: 'Brand',
 	model: 'Model B',
-	color: '#000000',
+	color: '#ff0000',
 	tractionBallOption: true,
 	year: 2022,
 	maxSpeed: 250,
@@ -58,6 +58,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	});
 
 	mc.add(car, 'model', 'list', {
+		values: ['Model A', 'Model B', 'Model C'],
+		onChange: (v) => {
+			console.log('Changed model', v);
+			displayTargetObjectValues();
+		}
+	});
+
+	mc.add(car, 'color', 'color', {
 		values: ['Model A', 'Model B', 'Model C'],
 		onChange: (v) => {
 			console.log('Changed model', v);
