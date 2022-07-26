@@ -42,6 +42,11 @@ class MicroComps extends EventTarget{
 			this.dom.append(comp.dom);
 			this.comps.push(comp);
 		}
+		else if(type == "color"){
+			comp = new ColorEditor(object, key, options);
+			this.dom.append(comp.dom);
+			this.comps.push(comp);
+		}
 
 		return comp;
 	}
@@ -255,6 +260,54 @@ class ListEditor extends EventTarget{
 	bindEvents(){
 		this.dom.querySelector('select').addEventListener('change', (e) => {
 			this.object[this.key] = e.target.value;
+
+			if(this.options.onChange){
+				this.options.onChange(this.object[this.key]);
+			}
+		});
+	}
+}
+
+class ColorEditor extends EventTarget{
+	constructor(object, key, options){
+		super();
+		this.object = object;
+		this.key = key;
+		this.options = options;
+		this.dom;
+
+		this.createDom();
+		this.bindEvents();
+	}
+
+	createDom(){
+		this.dom = document.createElement('li');
+		this.dom.innerHTML = `<input type="color" value="${this.object[this.key]}">`;
+
+		if(this.options.label){
+			let lbl = document.createElement('p');
+			lbl.innerText = this.options.label;
+			lbl.classList.add('label');
+			this.dom.querySelector('input').before(lbl);
+		}
+		else{			
+			let lbl = document.createElement('p');
+			lbl.innerText = this.key;
+			lbl.classList.add('label');
+			this.dom.querySelector('input').before(lbl);
+		}
+
+		if(this.options.onCreate){
+			this.options.onCreate(this.object[this.key]);
+		}
+	}
+
+	bindEvents(){
+		this.dom.querySelector('input').addEventListener('change', (e) => {
+			let v = e.target.value;
+
+			this.object[this.key] = v;
+			e.target.value = v;
 
 			if(this.options.onChange){
 				this.options.onChange(this.object[this.key]);
