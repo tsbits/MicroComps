@@ -2,7 +2,7 @@ let mc;
 let car = {
 	brand: 'Brand',
 	model: 'Model B',
-	color: '#ff0000',
+	color: '#00cc88',
 	tractionBallOption: true,
 	year: 2022,
 	maxSpeed: 250,
@@ -11,7 +11,7 @@ let car = {
 
 document.addEventListener("DOMContentLoaded", (event) => {
 	mc = new MicroComps({
-		container: document.getElementById('microcomps')
+		container: document.querySelector('.microcomps')
 	});
 
 	mc.add(car, 'tractionBallOption', 'boolean', {

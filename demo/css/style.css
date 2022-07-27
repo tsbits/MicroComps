@@ -10,25 +10,34 @@ html, body{
 	box-sizing: border-box;
 }
 
-ul{
+#targetObject{
+	position: absolute;
+	top:  50%;
+	left:  calc(50vw - 150px);
+	transform:  translate(-50%, -50%);
+	color:  #fff;
+	border:  2px solid #fff;
+	border-radius:  15px;
+	overflow:  hidden;
+}
+
+#targetObject ul{
 	margin:  0;
 	padding:  0;
 	list-style:  none;
 }
 
-ul li{
+#targetObject ul li{
 	margin:  0;
 	padding:  1rem;
-	color:  #000;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 2px solid #fff;
 }
 
-ul li input{
-	display:  block;
-	width:  100%;
+#targetObject ul li:last-child{
+	border-bottom:  0;
 }
 
-#microcomps{
+.microcomps{
 	position: absolute;
 	top: 0;
 	right:  0;
@@ -37,17 +46,50 @@ ul li input{
 	background:  #fff;
 }
 
-#microcomps .label{
+.microcomps ul{
+	margin:  0;
+	padding:  0;
+	list-style:  none;
+}
+
+.microcomps ul li{
+	margin:  0;
+	padding:  1rem;
+	color:  #000;
+	border-bottom: 1px solid #ccc;
+}
+
+.microcomps .label{
 	font-size:  0.8rem;
 	font-weight:  bold;
 	margin-top:  0;
+	margin-bottom:  0.25rem;
 }
 
-#targetObject{
-	position: absolute;
-	top:  50%;
-	left:  calc(50vw - 150px);
-	background:  #fff;
-	color:  #000;
-	transform:  translate(-50%, -50%);
+.microcomps input, .microcomps select{
+	display:  block;
+	width:  100%;
+	padding:  0.5rem 0.75rem;
+	border:  1px solid #aaa;
+	border-radius:  5px;
+}
+
+.microcomps input[type="color"]{
+    padding: 0;
+	-webkit-appearance: none;
+	overflow:  hidden;
+}
+
+.microcomps input[type="color"]::-webkit-color-swatch-wrapper{
+    padding: 0;
+}
+
+.microcomps input[type="color"]::-webkit-color-swatch{
+	border: none;
+}
+
+.microcomps input[type="checkbox"]{
+	display:  block;
+	margin-left:  0;
+	width:  auto;
 }
