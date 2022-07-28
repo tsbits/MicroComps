@@ -3,7 +3,7 @@
 
 🚨 W.I.P, not safe to use in production now.
 
-Editors :
+## Todo :
 - [x] StringEditor
 - [x] NumberEditor
 - [x] BooleanEditor
@@ -12,3 +12,4 @@ Editors :
 - [x] XYEditor
 - [x] XYZEditor
 - [x] Range slider
+- [ ] ...do not hesitate to ask for more
