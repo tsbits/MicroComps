@@ -19,6 +19,7 @@ html, body{
 	border:  2px solid #fff;
 	border-radius:  15px;
 	overflow:  hidden;
+	width:  350px;
 }
 
 #targetObject ul{
@@ -93,6 +94,16 @@ html, body{
 	display:  block;
 	margin-left:  0;
 	width:  auto;
+}
+
+.microcomps .xy-editor input{
+	width:  calc(98% / 2);
+	margin:  0 2% 0 0;
+	display:  inline-block;
+}
+
+.microcomps .xy-editor input:last-child{
+	margin:  0;
 }
 
 .microcomps .xyz-editor input{
