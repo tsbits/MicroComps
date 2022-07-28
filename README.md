@@ -38,7 +38,7 @@ mc.add(dog, 'age', 'number', {
 	}
 });
 ```
-See more example in [/demo/js/main.js](/demo/js/main.js) and right in the [source](MicroComps.js)
+See more example in [/demo/js/main.js](/demo/js/main.js) and right in the [source](MicroComps.js).
 
 ## Todo
 - [x] StringEditor
