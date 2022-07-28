@@ -7,6 +7,7 @@ let car = {
 	year: 2022,
 	maxSpeed: 250,
 	licencePlate: "2F45T4U",
+	velocity: [0, 0],
 	size: [250, 185, 150]
 }
 
@@ -69,6 +70,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	mc.add(car, 'color', 'color', {
 		onChange: (v) => {
 			console.log('Changed color', v);
+			displayTargetObjectValues();
+		}
+	});
+
+	mc.add(car, 'velocity', 'xy', {
+		label: "Car velocity",
+		min: 0,
+		max: 10,
+		onChange: (v) => {
+			console.log('Changed velocity', v);
 			displayTargetObjectValues();
 		}
 	});
