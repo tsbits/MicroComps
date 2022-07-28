@@ -9,5 +9,6 @@ Editors :
 - [x] BooleanEditor
 - [x] ListEditor
 - [x] ColorEditor
-- [ ] XYEditor
-- [ ] XYZEditor
+- [x] XYEditor
+- [x] XYZEditor
+- [ ] Range slider
