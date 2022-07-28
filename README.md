@@ -38,7 +38,7 @@ mc.add(dog, 'age', 'number', {
 	}
 });
 ```
-See more in [/demo/js/main.js](/demo/js/main.js)
+See more example in [/demo/js/main.js](/demo/js/main.js) and right in the [source](MicroComps.js)
 
 ## Todo
 - [x] StringEditor
@@ -49,4 +49,5 @@ See more in [/demo/js/main.js](/demo/js/main.js)
 - [x] XYEditor
 - [x] XYZEditor
 - [x] Range slider
+- [ ] More exhaustive documentation
 - [ ] ...do not hesitate to ask for more
