@@ -11,4 +11,4 @@ Editors :
 - [x] ColorEditor
 - [x] XYEditor
 - [x] XYZEditor
-- [ ] Range slider
+- [x] Range slider
