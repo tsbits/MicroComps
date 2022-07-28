@@ -96,6 +96,10 @@ html, body{
 	width:  auto;
 }
 
+.microcomps input[type="range"]{
+	padding: 0.5rem 0;
+}
+
 .microcomps .xy-editor input{
 	width:  calc(98% / 2);
 	margin:  0 2% 0 0;
