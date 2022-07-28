@@ -8,7 +8,8 @@ let car = {
 	maxSpeed: 250,
 	licencePlate: "2F45T4U",
 	velocity: [0, 0],
-	size: [250, 185, 150]
+	size: [250, 185, 150],
+	engineCylinder : 8
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -90,6 +91,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		max: 400,
 		onChange: (v) => {
 			console.log('Changed size', v);
+			displayTargetObjectValues();
+		}
+	});
+
+	mc.add(car, 'engineCylinder', 'range', {
+		label: "Car engine cylinder",
+		min: 4,
+		max: 8,
+		step: 2,
+		onChange: (v) => {
+			console.log('Engine cylinder count', v);
 			displayTargetObjectValues();
 		}
 	});
