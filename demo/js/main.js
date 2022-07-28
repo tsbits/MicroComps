@@ -6,7 +6,8 @@ let car = {
 	tractionBallOption: true,
 	year: 2022,
 	maxSpeed: 250,
-	licencePlate: "2F45T4U"
+	licencePlate: "2F45T4U",
+	size: [250, 185, 150]
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -66,9 +67,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	});
 
 	mc.add(car, 'color', 'color', {
-		values: ['Model A', 'Model B', 'Model C'],
 		onChange: (v) => {
-			console.log('Changed model', v);
+			console.log('Changed color', v);
+			displayTargetObjectValues();
+		}
+	});
+
+	mc.add(car, 'size', 'xyz', {
+		label: "Car size",
+		min: 150,
+		max: 400,
+		onChange: (v) => {
+			console.log('Changed size', v);
 			displayTargetObjectValues();
 		}
 	});

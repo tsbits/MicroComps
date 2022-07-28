@@ -19,7 +19,6 @@ class MicroComps extends EventTarget{
 	}
 
 	add(object, key, type, options = {}){
-		console.log(typeof object[key], type)
 		let comp;
 
 		if(type == "number"){
@@ -44,6 +43,11 @@ class MicroComps extends EventTarget{
 		}
 		else if(type == "color"){
 			comp = new ColorEditor(object, key, options);
+			this.dom.append(comp.dom);
+			this.comps.push(comp);
+		}
+		else if(type == "xyz"){
+			comp = new XYZEditor(object, key, options);
 			this.dom.append(comp.dom);
 			this.comps.push(comp);
 		}
@@ -243,7 +247,6 @@ class ListEditor extends EventTarget{
 
 			for(let v in this.options.values){
 				let opt = document.createElement('option');
-				console.log(opt)
 				opt.text = this.options.values[v];
 				opt.value = this.options.values[v];
 				select.append(opt);
@@ -312,6 +315,84 @@ class ColorEditor extends EventTarget{
 			if(this.options.onChange){
 				this.options.onChange(this.object[this.key]);
 			}
+		});
+	}
+}
+
+class XYZEditor extends EventTarget{
+	constructor(object, key, options){
+		super();
+		this.object = object;
+		this.key = key;
+		this.options = options;
+		this.dom;
+
+		this.createDom();
+		this.bindEvents();
+	}
+
+	createDom(){
+		this.dom = document.createElement('li');
+
+		for(let val in this.object[this.key]){
+			console.log(this.object[this.key][val])
+			var i = document.createElement('input');
+			i.type = "number";
+			i.value = this.object[this.key][val];
+			this.dom.append(i);
+		}
+
+		if(this.options.label){
+			let lbl = document.createElement('p');
+			lbl.innerText = this.options.label;
+			lbl.classList.add('label');
+			this.dom.querySelector('input').before(lbl);
+		}
+		else{			
+			let lbl = document.createElement('p');
+			lbl.innerText = this.key;
+			lbl.classList.add('label');
+			this.dom.querySelector('input').before(lbl);
+		}
+
+		if(this.options.min){
+			this.dom.querySelectorAll('input').forEach( (el, index) => {
+				el.setAttribute('min', this.options.min);
+			});
+		}
+
+		if(this.options.max){
+			this.dom.querySelectorAll('input').forEach( (el, index) => {
+				el.setAttribute('max', this.options.max);
+			});
+		}
+
+		if(this.options.onCreate){
+			this.options.onCreate(this.object[this.key]);
+		}
+	}
+
+	bindEvents(){
+		let self = this;
+		this.dom.querySelectorAll('input').forEach((el, index) => {
+			el.addEventListener('change', (e) => {
+				let v = parseFloat(e.target.value);
+
+				if(self.options.min && v < self.options.min){
+					v = self.options.min;
+				}
+
+				if(self.options.max && v > self.options.max){
+					v = self.options.max;
+				}
+
+				this.object[this.key][index] = v;
+				e.target.value = v;
+
+				if(self.options.onChange){
+					self.options.onChange(this.object[this.key]);
+				}
+			});
 		});
 	}
 }
