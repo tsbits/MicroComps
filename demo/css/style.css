@@ -69,6 +69,7 @@ html, body{
 .microcomps input, .microcomps select{
 	display:  block;
 	width:  100%;
+	height:  2rem;
 	padding:  0.5rem 0.75rem;
 	border:  1px solid #aaa;
 	border-radius:  5px;
