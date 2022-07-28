@@ -94,3 +94,13 @@ html, body{
 	margin-left:  0;
 	width:  auto;
 }
+
+.microcomps .xyz-editor input{
+	width:  calc(96% / 3);
+	margin:  0 2% 0 0;
+	display:  inline-block;
+}
+
+.microcomps .xyz-editor input:last-child{
+	margin:  0;
+}
