@@ -70,6 +70,8 @@ class NumberEditor extends EventTarget{
 
 	createDom(){
 		this.dom = document.createElement('li');
+		this.dom.classList.add('microcomps-editor');
+		this.dom.classList.add('number-editor');
 		this.dom.innerHTML = `<input type="number" value="${this.object[this.key]}">`;
 
 		if(this.options.label){
@@ -134,6 +136,8 @@ class BooleanEditor extends EventTarget{
 
 	createDom(){
 		this.dom = document.createElement('li');
+		this.dom.classList.add('microcomps-editor');
+		this.dom.classList.add('boolean-editor');
 		let checked = this.object[this.key]?'checked':'';
 		this.dom.innerHTML = `<input type="checkbox" ${checked}>`;
 
@@ -180,6 +184,8 @@ class StringEditor extends EventTarget{
 
 	createDom(){
 		this.dom = document.createElement('li');
+		this.dom.classList.add('microcomps-editor');
+		this.dom.classList.add('string-editor');
 		this.dom.innerHTML = `<input type="text" value="${this.object[this.key]}">`;
 
 		if(this.options.label){
@@ -225,6 +231,8 @@ class ListEditor extends EventTarget{
 
 	createDom(){
 		this.dom = document.createElement('li');
+		this.dom.classList.add('microcomps-editor');
+		this.dom.classList.add('list-editor');
 
 		let select = document.createElement('select');
 		this.dom.append(select);
@@ -285,6 +293,8 @@ class ColorEditor extends EventTarget{
 
 	createDom(){
 		this.dom = document.createElement('li');
+		this.dom.classList.add('microcomps-editor');
+		this.dom.classList.add('color-editor');
 		this.dom.innerHTML = `<input type="color" value="${this.object[this.key]}">`;
 
 		if(this.options.label){
@@ -333,6 +343,8 @@ class XYZEditor extends EventTarget{
 
 	createDom(){
 		this.dom = document.createElement('li');
+		this.dom.classList.add('microcomps-editor');
+		this.dom.classList.add('xyz-editor');
 
 		for(let val in this.object[this.key]){
 			console.log(this.object[this.key][val])
@@ -374,6 +386,7 @@ class XYZEditor extends EventTarget{
 
 	bindEvents(){
 		let self = this;
+
 		this.dom.querySelectorAll('input').forEach((el, index) => {
 			el.addEventListener('change', (e) => {
 				let v = parseFloat(e.target.value);
