@@ -1,8 +1,6 @@
 # MicroComps
 🧱 A bundle of micro components.
 
-🚨 W.I.P, not safe to use in production now.
-
 ## How it works
 ### Step 1 : Import
 Import MicroComps.js into your project
