@@ -9,3 +9,5 @@ Editors :
 - [x] BooleanEditor
 - [x] ListEditor
 - [x] ColorEditor
+- [ ] XYEditor
+- [ ] XYZEditor
