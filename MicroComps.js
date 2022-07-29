@@ -97,11 +97,11 @@ class NumberEditor extends EventTarget{
 			this.dom.querySelector('input').before(lbl);
 		}
 
-		if(this.options.min){
+		if(this.options.min != null){
 			this.dom.querySelector('input').setAttribute('min', this.options.min);
 		}
 
-		if(this.options.max){
+		if(this.options.max != null){
 			this.dom.querySelector('input').setAttribute('max', this.options.max);
 		}
 
@@ -114,11 +114,11 @@ class NumberEditor extends EventTarget{
 		this.dom.querySelector('input').addEventListener('change', (e) => {
 			let v = parseFloat(e.target.value);
 
-			if(this.options.min && v < this.options.min){
+			if(this.options.min != null && v < this.options.min){
 				v = this.options.min;
 			}
 
-			if(this.options.max && v > this.options.max){
+			if(this.options.max != null && v > this.options.max){
 				v = this.options.max;
 			}
 
@@ -377,13 +377,13 @@ class XYEditor extends EventTarget{
 			this.dom.querySelector('input').before(lbl);
 		}
 
-		if(this.options.min){
+		if(this.options.min != null){
 			this.dom.querySelectorAll('input').forEach( (el, index) => {
 				el.setAttribute('min', this.options.min);
 			});
 		}
 
-		if(this.options.max){
+		if(this.options.max != null){
 			this.dom.querySelectorAll('input').forEach( (el, index) => {
 				el.setAttribute('max', this.options.max);
 			});
@@ -401,11 +401,11 @@ class XYEditor extends EventTarget{
 			el.addEventListener('change', (e) => {
 				let v = parseFloat(e.target.value);
 
-				if(self.options.min && v < self.options.min){
+				if(self.options.min != null && v < self.options.min){
 					v = self.options.min;
 				}
 
-				if(self.options.max && v > self.options.max){
+				if(self.options.max != null && v > self.options.max){
 					v = self.options.max;
 				}
 
@@ -458,13 +458,13 @@ class XYZEditor extends EventTarget{
 			this.dom.querySelector('input').before(lbl);
 		}
 
-		if(this.options.min){
+		if(this.options.min != null){
 			this.dom.querySelectorAll('input').forEach( (el, index) => {
 				el.setAttribute('min', this.options.min);
 			});
 		}
 
-		if(this.options.max){
+		if(this.options.max != null){
 			this.dom.querySelectorAll('input').forEach( (el, index) => {
 				el.setAttribute('max', this.options.max);
 			});
@@ -482,11 +482,11 @@ class XYZEditor extends EventTarget{
 			el.addEventListener('change', (e) => {
 				let v = parseFloat(e.target.value);
 
-				if(self.options.min && v < self.options.min){
+				if(self.options.min != null && v < self.options.min){
 					v = self.options.min;
 				}
 
-				if(self.options.max && v > self.options.max){
+				if(self.options.max != null && v > self.options.max){
 					v = self.options.max;
 				}
 
@@ -532,11 +532,11 @@ class RangeEditor extends EventTarget{
 			this.dom.querySelector('input').before(lbl);
 		}
 
-		if(this.options.min){
+		if(this.options.min != null){
 			this.dom.querySelector('input').setAttribute('min', this.options.min);
 		}
 
-		if(this.options.max){
+		if(this.options.max != null){
 			this.dom.querySelector('input').setAttribute('max', this.options.max);
 		}
 
@@ -553,11 +553,11 @@ class RangeEditor extends EventTarget{
 		this.dom.querySelector('input').addEventListener('input', (e) => {
 			let v = parseFloat(e.target.value);
 
-			if(this.options.min && v < this.options.min){
+			if(this.options.min != null && v < this.options.min){
 				v = this.options.min;
 			}
 
-			if(this.options.max && v > this.options.max){
+			if(this.options.max != null && v > this.options.max){
 				v = this.options.max;
 			}
 
