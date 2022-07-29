@@ -1,6 +1,8 @@
 # MicroComps
 🧱 A bundle of micro components.
 
+### [🔗Demo](https://codepen.io/tsbits/pen/jOzamJz)
+
 ## How it works
 ### Step 1 : Import
 Import MicroComps.js into your project
